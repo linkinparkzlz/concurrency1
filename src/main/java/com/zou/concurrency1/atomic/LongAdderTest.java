@@ -11,7 +11,6 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Slf4j
-@NotThreadSafe
 public class LongAdderTest {
 
 

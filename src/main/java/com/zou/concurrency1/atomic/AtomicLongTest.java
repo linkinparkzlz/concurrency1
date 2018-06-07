@@ -9,11 +9,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Slf4j
 @NotThreadSafe
-public class AtomicIntegerTest {
+public class AtomicLongTest {
 
 
     //请求总数
@@ -23,7 +22,7 @@ public class AtomicIntegerTest {
     public static int threadAll = 200;
 
 
-    private static AtomicLong count = new AtomicLong();
+    private static AtomicInteger count = new AtomicInteger();
 
     public static void main(String[] args) throws InterruptedException {
 

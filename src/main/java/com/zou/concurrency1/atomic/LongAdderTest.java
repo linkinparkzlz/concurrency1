@@ -8,13 +8,11 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
 @NotThreadSafe
-public class AtomicIntegerTest {
+public class LongAdderTest {
 
 
     //请求总数
@@ -24,7 +22,7 @@ public class AtomicIntegerTest {
     public static int threadAll = 200;
 
 
-    private static LongAdder count = new LongAdder();
+    private static AtomicLong count = new AtomicLong();
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -57,7 +55,7 @@ public class AtomicIntegerTest {
             });
         }
 
-        System.out.println(count);
+        System.out.println(count.get());
         countDownLatch.await();
 
         executorService.shutdown();//使用完线程 池后关闭
@@ -66,7 +64,7 @@ public class AtomicIntegerTest {
 
     private static void add() {
 
-        count.increment(); //线程不安全写法
+        count.incrementAndGet(); //线程不安全写法
     }
 
 

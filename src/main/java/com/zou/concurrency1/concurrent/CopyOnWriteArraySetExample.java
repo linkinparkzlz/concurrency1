@@ -17,7 +17,7 @@ public class CopyOnWriteArraySetExample {
     //并发数
     public static int threadAll = 200;
 
-    private static Set<Integer> set = new CopyOnWriteArraySet<>();
+    private static Set<Integer> set = new ConcurrentSkipListSet<>();
 
 
     public static void main(String[] args) throws InterruptedException {

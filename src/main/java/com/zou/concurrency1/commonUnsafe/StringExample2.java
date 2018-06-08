@@ -1,4 +1,4 @@
-package com.zou.concurrency1;
+package com.zou.concurrency1.commonUnsafe;
 
 
 import com.zou.concurrency1.annotions.NotThreadSafe;
@@ -11,9 +11,7 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-public class ConcurrencyTest {
-
-
+public class StringExample2 {
 
     //请求总数
     public static int clientAll = 5000;
@@ -22,7 +20,7 @@ public class ConcurrencyTest {
     public static int threadAll = 200;
 
 
-    private static int count = 0;
+    private static StringBuffer stringBuffer = new StringBuffer();
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -42,7 +40,7 @@ public class ConcurrencyTest {
 
                 try {
                     semaphore.acquire(); //是否允许执行
-                    add();
+                    update();
                     semaphore.release();//执行完成后释放
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -50,21 +48,22 @@ public class ConcurrencyTest {
 
 
                 countDownLatch.countDown();
+                System.out.println(stringBuffer.length());
 
 
             });
         }
 
-        System.out.println(count);
         countDownLatch.await();
 
         executorService.shutdown();//使用完线程 池后关闭
     }
 
 
-    private static void add() {
+    private static void update() {
 
-        count++; //线程不安全写法
+        stringBuffer.append("1");
+
     }
 
 

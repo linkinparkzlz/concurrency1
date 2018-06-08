@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-public class CountExample1 {
+public class CountExample3 {
 
 
     //请求总数
@@ -21,7 +21,7 @@ public class CountExample1 {
     public static int threadAll = 200;
 
 
-    private static volatile int count = 0;
+    private static int count = 0;
 
     public static void main(String[] args) throws InterruptedException {
 

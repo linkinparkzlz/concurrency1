@@ -1,10 +1,6 @@
 package com.zou.concurrency1.singleton;
 
-//懒汉单例  多线程环境下会有线程安全问题
 
-import com.zou.concurrency1.annotions.NotThreadSafe;
-
-@NotThreadSafe
 public class SingletonTest2 {
 
 
@@ -14,13 +10,20 @@ public class SingletonTest2 {
     }
 
     //单例对象
-    private static SingletonTest2 instance = null;
+    private static volatile SingletonTest2 instance = null;
 
     //静态工厂方法
     public static SingletonTest2 getInstance() {
 
-        if (instance == null) {
-            instance = new SingletonTest2();
+        if (instance == null) { //双重检测机制
+            synchronized (SingletonTest1.class) {
+
+                if (instance == null) {
+                    instance = new SingletonTest2();
+                }
+
+            }
+
         }
 
         return instance;

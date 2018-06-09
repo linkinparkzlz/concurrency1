@@ -10,7 +10,7 @@ public class ThreadPoolExample4 {
 
     public static void main(String[] args) {
 
-        c executorService = Executors.newScheduledThreadPool(5);
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(5);
 
 //        for (int i = 0; i < 10; i++) {
 //

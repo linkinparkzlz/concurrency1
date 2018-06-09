@@ -3,12 +3,12 @@ package com.zou.concurrency1.threadPool;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThreadPoolExample1 {
+public class ThreadPoolExample2 {
 
 
     public static void main(String[] args) {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newCachedThreadPool();
 
         for (int i = 0; i < 10; i++) {
 

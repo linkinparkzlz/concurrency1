@@ -38,6 +38,8 @@ public class CyclicBarrierExample1 {
 
             });
         }
+        //关闭线程池
+        executorService.shutdown();
     }
 
 
